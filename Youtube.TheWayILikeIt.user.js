@@ -3,7 +3,7 @@
 // @description  Sets YouTube's top bar position to relative. Makes the area around player #131313. Makes player size 1280px by 720px. Stops Autoplay. Adds clipconverter links to more menu.
 // @include      https://*.youtube.com/*
 // @include      http://*.youtube.com/*
-// @version      1.4
+// @version      1.4.1
 // @grant        none
 // @author       Baris Senkal etekmekketcap.com
 // ==/UserScript==
@@ -42,27 +42,22 @@ var prepPlayer = function() {
 
     mpoisitioner.style.background = '#131313';
 
-    pplayer.style.background = '#131313';
-    pplayer.style.paddingBottom = '50px';
-    pplayer.style.marginBottom = '10px';
-    pplayer.style.marginLeft = '-200px';
-    pplayer.style.marginRight = '-200px';
-    pplayer.style.height = window.innerHeight - 50 +'px';
+    pplayer.style.height = window.innerHeight +'px';
+    theater.style.height = (window.innerHeight - 10) +'px';
 
     theater.style.background = '#131313';
+
   } else {
     console.log('Html of youtube changed? color changes', mcontainter , pplayer , theater);
   }
 
   /* Player size */
-  if(window.innerWidth > 1344 && papi && theater && ytcontent && html5content && mainvideo && bar && wbutton && papi.style && theater.style && ytcontent.style && html5content.style && mainvideo.style && bar.style && wbutton.style){
+  if(window.innerWidth > 1344 && papi && ytcontent && html5content && mainvideo && bar && wbutton && papi.style && ytcontent.style && html5content.style && mainvideo.style && bar.style && wbutton.style){
     papi.style.width = '1280px';
     papi.style.height = '720px';
     papi.style.marginLeft = '488px';
 
-    theater.style.height = '720px';
-
-    ytcontent.style.top = '250px;'
+    ytcontent.style.overflow = 'hidden';
 
     //html5content.style.width = '1280px';
 
@@ -82,7 +77,7 @@ var prepPlayer = function() {
     if(document.cookie) document.cookie="wide=1; path=/; domain=.youtube.com";
 
   } else {
-    console.log('Html of youtube changed? player size', window.innerWidth > 1344 , papi , theater , ytcontent , html5content , mainvideo , bar , wbutton);
+    console.log('Html of youtube changed? player size', window.innerWidth > 1344 , papi , ytcontent , html5content , mainvideo , bar , wbutton);
   }
 
   /* Add ClipConverter links to submenu */
