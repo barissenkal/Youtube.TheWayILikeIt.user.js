@@ -37,5 +37,5 @@ Annotations on YouTube Player use `top`, `left`, `width`, `height` to properly d
 ```javascript
 var annotations = document.querySelector('.video-annotations')
 annotations.style.transform = 'scale(1.5,1.5)'; //Scale up to predetermined size.
-annotations.style.left = '214px'; //Realign on page
+annotations.style.left = '214px'; //Realign on page (assumed static page width)
 ```
