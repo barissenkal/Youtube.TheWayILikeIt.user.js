@@ -25,7 +25,7 @@ video.addEventListener('canplaythrough',function(){
 
 /*
   When another page (like homepage) opens, 'abort' event is triggered.
-  Video from a previous page is stoped, source is deleted and new page is loading.
+  Video from a previous page is stopped, source is deleted and new page is loading.
 */
 video.addEventListener('abort',function(){
   /* Code to run when navigation away from video page  */
