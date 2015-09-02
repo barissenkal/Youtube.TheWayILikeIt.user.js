@@ -31,6 +31,7 @@ video.addEventListener('abort',function(){
 },false);
 ```
 
+
 Annotations on YouTube Player use `top`, `left`, `width`, `height` to properly display it on player. By adding `transform: scale()` to div containing annotations, I managed to scale up Annotations to my custom player size.
 
 ```javascript
