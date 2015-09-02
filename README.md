@@ -11,7 +11,6 @@ Youtube doesn't fully load the new page when a link is clicked. (At least on my 
 So I am using events of the Html5 video element that is present (but sometimes hidden) on all pages.
 
 ```javascript
-
 //Finding the Html5 video element on page
 var video = document.querySelector('.video-stream.html5-main-video');
 
@@ -30,5 +29,12 @@ video.addEventListener('canplaythrough',function(){
 video.addEventListener('abort',function(){
   /* Code to run when navigation away from video page  */
 },false);
+```
 
+Annotations on YouTube Player use `top`, `left`, `width`, `height` to properly display it on player. By adding `transform: scale()` to div containing annotations, I managed to scale up Annotations to my custom player size.
+
+```javascript
+var annotations = document.querySelector('.video-annotations')
+annotations.style.transform = 'scale(1.5,1.5)'; //Scale up to predetermined size.
+annotations.style.left = '214px'; //Realign on page
 ```
