@@ -3,7 +3,7 @@
 // @description  Sets YouTube's top bar position to relative. Makes the area around player #131313. Makes player size 1280px by 720px. Stops Autoplay. Adds clipconverter links to more menu.
 // @include      https://*.youtube.com/*
 // @include      http://*.youtube.com/*
-// @version      1.4.2
+// @version      1.4.3
 // @grant        none
 // @author       Baris Senkal etekmekketcap.com
 // ==/UserScript==
@@ -23,6 +23,7 @@ var prepPlayer = function() {
     annotations = document.querySelector('.video-annotations'), //buttom bar
     wbutton = document.querySelector('.ytp-size-button'), //wide size button
     pplayer = document.getElementById('placeholder-player'),
+    pplaylist = document.getElementById('watch-appbar-playlist'),
     div_embed = document.getElementById('action-panel-overflow-menu');
 
   /* Stop youtube top bar from sticking */
@@ -44,6 +45,8 @@ var prepPlayer = function() {
 
     pplayer.style.height = window.innerHeight +'px';
     theater.style.height = (window.innerHeight - 10) +'px';
+
+    if(pplaylist) pplaylist.style.marginTop = (window.innerHeight - 460) + "px";
 
     theater.style.background = '#131313';
 
