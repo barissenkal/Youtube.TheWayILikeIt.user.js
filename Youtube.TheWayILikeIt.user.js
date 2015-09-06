@@ -3,7 +3,7 @@
 // @description  Sets YouTube's top bar position to relative. Makes the area around player #131313. Makes player size 1280px by 720px. Stops Autoplay. Adds clipconverter links to more menu.
 // @include      https://*.youtube.com/*
 // @include      http://*.youtube.com/*
-// @version      1.4.1
+// @version      1.4.2
 // @grant        none
 // @author       Baris Senkal etekmekketcap.com
 // ==/UserScript==
@@ -17,7 +17,7 @@ var prepPlayer = function() {
     theater = document.getElementById('theater-background'), //the theater background
     papi = document.getElementById('player-api'), // player api
     ytcontent = document.getElementById('content'), // the bottom content
-    html5content = document.querySelector('.html5-video-content'), // ?
+    //html5content = document.querySelector('.html5-video-content'),
     mainvideo = document.querySelector('.video-stream'), //video itself
     bar = document.querySelector('.ytp-chrome-bottom'), //buttom bar
     annotations = document.querySelector('.video-annotations'), //buttom bar
@@ -26,7 +26,7 @@ var prepPlayer = function() {
     div_embed = document.getElementById('action-panel-overflow-menu');
 
   /* Stop youtube top bar from sticking */
-  if(mpoisitioner && mpoisitionerOffset && mpoisitioner.style && mpoisitionerOffset.style){
+  if(mpoisitioner && mpoisitionerOffset){
     mpoisitioner.style.position = 'relative';
     mpoisitionerOffset.style.height = '0px';
   } else {
@@ -34,7 +34,7 @@ var prepPlayer = function() {
   }
 
   /* Color changes with opacity and background colors */
-  if(mcontainter && pplayer && theater && mcontainter.style && pplayer.style && theater.style){
+  if(mcontainter && pplayer && theater){
 
     mcontainter.style.background = 'transparent';
     mcontainter.style.opacity = '0.3';
@@ -52,14 +52,15 @@ var prepPlayer = function() {
   }
 
   /* Player size */
-  if(window.innerWidth > 1344 && papi && ytcontent && html5content && mainvideo && bar && wbutton && papi.style && ytcontent.style && html5content.style && mainvideo.style && bar.style && wbutton.style){
+  if(window.innerWidth > 1344 && papi && ytcontent && mainvideo && bar && wbutton){
     papi.style.width = '1280px';
     papi.style.height = '720px';
     papi.style.marginLeft = '488px';
 
     ytcontent.style.overflow = 'hidden';
 
-    //html5content.style.width = '1280px';
+    // html5content.style.width = '1280px';
+    // html5content.style.height = '720px';
 
     if(annotations && annotations.style){
       annotations.style.transform = 'scale(1.5,1.5)';
@@ -77,7 +78,7 @@ var prepPlayer = function() {
     if(document.cookie) document.cookie="wide=1; path=/; domain=.youtube.com";
 
   } else {
-    console.log('Html of youtube changed? player size', window.innerWidth > 1344 , papi , ytcontent , html5content , mainvideo , bar , wbutton);
+    console.log('Html of youtube changed? player size', window.innerWidth > 1344 , papi , ytcontent , mainvideo , bar , wbutton);
   }
 
   /* Add ClipConverter links to submenu */
@@ -108,7 +109,7 @@ var resetTopBar = function(){
     mpoisitionerOffset = document.getElementById("masthead-positioner-height-offset"),
     mcontainter = document.getElementById('yt-masthead-container');
 
-  if(mpoisitioner && mpoisitionerOffset && mcontainter && mpoisitioner.style && mpoisitionerOffset.style && mcontainter.style){
+  if(mpoisitioner && mpoisitionerOffset && mcontainter){
     mpoisitioner.style.background = '#fff';
     mpoisitioner.style.position = 'fixed';
 
@@ -152,7 +153,16 @@ function start() {
     resetTopBar();
   },false);
 
-  //Making Youtube Logo to link Subscriptions page (by preference)
+  //Detecting exit from fullscreen (Only works for webkit fullscreen)
+  document.addEventListener("webkitfullscreenchange", function (event) {
+    if(!document.webkitIsFullScreen) {
+      setTimeout(function () {
+        prepPlayer();
+      }, 1000); // Timeout with an arbitary number is bad solution but it works.
+    }
+  }, false);
+
+  //Making Youtube Logo to link Subscriptions page (by personal preference)
   document.getElementById('logo-container').href = '/feed/subscriptions';
 
   if(console.info) console.info('Youtube Stuff ready to go');
