@@ -3,7 +3,7 @@
 // @description  Sets YouTube's top bar position to relative. Makes the area around player #131313. Makes player size 1280px by 720px. Stops Autoplay. Adds clipconverter links to more menu.
 // @include      https://*.youtube.com/*
 // @include      http://*.youtube.com/*
-// @version      1.4.3
+// @version      1.4.4
 // @grant        none
 // @author       Baris Senkal etekmekketcap.com
 // ==/UserScript==
@@ -11,6 +11,9 @@
 var submenuSet = false;
 
 var prepPlayer = function() {
+
+  if(document.webkitIsFullScreen) return;
+
   var mpoisitioner = document.getElementById("masthead-positioner"),
     mpoisitionerOffset = document.getElementById("masthead-positioner-height-offset"),
     mcontainter = document.getElementById('yt-masthead-container'),
