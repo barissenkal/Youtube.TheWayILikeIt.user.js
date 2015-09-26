@@ -3,7 +3,7 @@
 // @description  Sets YouTube's top bar position to relative. Makes the area around player #131313. Makes player size 1280px by 720px. Stops Autoplay. Adds clipconverter links to more menu.
 // @include      https://*.youtube.com/*
 // @include      http://*.youtube.com/*
-// @version      1.4.4
+// @version      1.4.5
 // @grant        none
 // @author       Baris Senkal etekmekketcap.com
 // ==/UserScript==
@@ -27,6 +27,7 @@ var prepPlayer = function() {
     wbutton = document.querySelector('.ytp-size-button'), //wide size button
     pplayer = document.getElementById('placeholder-player'),
     pplaylist = document.getElementById('watch-appbar-playlist'),
+    miniPreview = document.querySelector('.ytp-tooltip-bg').parentNode, //has
     div_embed = document.getElementById('action-panel-overflow-menu');
 
   /* Stop youtube top bar from sticking */
@@ -58,7 +59,7 @@ var prepPlayer = function() {
   }
 
   /* Player size */
-  if(window.innerWidth > 1344 && papi && ytcontent && mainvideo && bar && wbutton){
+  if(window.innerWidth > 1344 && papi && ytcontent && mainvideo && bar && wbutton && miniPreview){
     papi.style.width = '1280px';
     papi.style.height = '720px';
     papi.style.marginLeft = '488px';
@@ -79,12 +80,14 @@ var prepPlayer = function() {
 
     bar.style.left = '225px';
 
+    miniPreview.style.marginLeft = "225px";
+
     wbutton.style.display = "none";
     //Setting cookie to keep player wide
     if(document.cookie) document.cookie="wide=1; path=/; domain=.youtube.com";
 
-  } else {
-    console.log('Html of youtube changed? player size', window.innerWidth > 1344 , papi , ytcontent , mainvideo , bar , wbutton);
+  } else if (window.innerWidth > 1344) {
+    console.log('Html of youtube changed? player size', papi , ytcontent , mainvideo , bar , wbutton, miniPreview);
   }
 
   /* Add ClipConverter links to submenu */
