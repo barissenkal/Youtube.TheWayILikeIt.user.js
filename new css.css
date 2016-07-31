@@ -1,0 +1,55 @@
+/* mpoisitioner */
+#masthead-positioner {
+  position: relative;
+  background: #131313;
+}
+
+/*mpoisitionerOffset*/
+#masthead-positioner-height-offset {
+  height: 0px !important;
+}
+
+/*theater*/
+#theater-background {
+  background: #131313 !important;
+}
+
+/*mcontainter*/
+#yt-masthead-container {
+  background: transparent;
+  opacity: 0.3;
+  border-bottom: 1px solid #131313;
+}
+
+
+@media screen and (min-width: 1344px) {
+  /*papi*/
+  #player-api {
+    width: 1280px;
+    height: 720px;
+    margin-left: 488px;
+  }
+
+  /* ytcontent */
+  #content {
+    overflow: hidden;
+  }
+
+  /* mainvideo */
+  .video-stream {
+    width: 1280px !important;
+    height: 720px !important;
+    left: 0px !important;
+  }
+
+  /*bar*/
+  .ytp-chrome-bottom {
+    left: 225px;
+  }
+
+  /*wbutton*/
+  .ytp-size-button {
+    display: none !important;
+  }
+}
+
