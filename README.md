@@ -30,12 +30,14 @@ video.addEventListener('abort',function(){
 },false);
 ```
 
+
+
 I am listening to "resize" event of "window" and "document.webkitIsFullScreen" property to detect if player went fullscreen. Works perfectly on my current setup.
 
 ```javascript
 window.addEventListener("resize", function (event) {
   if(!document.webkitIsFullScreen) {
-    //Out of screen or window size change.
+    //Out of fullscreen or window size change.
   } else {
     //Entered fullscreen
   }
