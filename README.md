@@ -5,6 +5,7 @@ Like the title says It makes YouTube better according to my preference. Only des
 
 Feel free to look into it, grab some parts and install as userscript on your browser.
 
+---
 ### How it Works (Useful parts of the code)
 
 When a link is clicked, Youtube doesn't open new a page but only loads parts of the new page into current one. So I am using events of the Html5 video element that is present (but sometimes hidden) on all pages. This way I can understand when there is a video playing and when a page without video opens.
@@ -30,9 +31,7 @@ video.addEventListener('abort',function(){
 },false);
 ```
 
-
-
-I am listening to "resize" event of "window" and "document.webkitIsFullScreen" property to detect if player went fullscreen. Works perfectly on my current setup.
+I am also listening to "resize" event of "window" and "document.webkitIsFullScreen" property to detect if player went fullscreen. (Normally fullscreen is an event by itself but this solution works great on my current setup.)
 
 ```javascript
 window.addEventListener("resize", function (event) {
@@ -43,3 +42,10 @@ window.addEventListener("resize", function (event) {
   }
 }, false);
 ```
+
+---
+### Screenshots
+
+|When window width is greater than 1344px|When window width is less than 1000px|
+|---|---|
+|<img src="http://i.imgur.com/zc2UC6A.png" width="400">|<img src="http://i.imgur.com/eWk6CeS.png" width="400">|
