@@ -1,12 +1,3 @@
-// ==UserScript==
-// @name        Youtube TheWayILikeIt
-// @description  Sets YouTube's top bar position to relative. Makes the area around player #131313. Makes player size 1280px by 720px. Stops Autoplay. Adds clipconverter links to more menu.
-// @include      https://*.youtube.com/*
-// @include      http://*.youtube.com/*
-// @version      1.4.9
-// @grant        none
-// @author       Baris Senkal etekmekketcap.com
-// ==/UserScript==
 
 var prepPlayer = function() {
   
